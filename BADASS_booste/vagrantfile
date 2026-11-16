@@ -1,0 +1,11 @@
+Vagrant.configure("2") do |config|
+    config.vm.box = "ubuntu/bionic64"
+    config.vm.hostname = "BADASS"
+    # config.vm.network "private_network", ip: "193.168.75.2" forwarded_port: { guest: 80, host: 8080 }
+    
+    config.vm.provider "virtualbox" do |vb|
+        vb.memory = "4096"
+        vb.cpus = 4
+    end
+    config.vm.provision "shell", path: "scripts/provision.sh"
+end
